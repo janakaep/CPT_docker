@@ -1,0 +1,452 @@
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSV Prediction</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function openFileDialog() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.webkitdirectory = true; // Allow directory selection
+        input.onchange = e => {
+          const folderPath = e.target.files[0].webkitRelativePath.split('/')[0];
+          document.getElementById('output_path').value = folderPath;
+          document.getElementById('folder_name').innerText = folderPath;
+        };
+        input.click();
+      }
+
+      $(document).ready(function() {
+        $('form').on('submit', function() {
+          $('#loading').show();
+        });
+      });
+    </script>
+    <style>
+      #loading {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      }
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -60px;
+        margin-left: -60px;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload CSV File for Prediction</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <br><br>
+      <label for="output_path">Output Folder Path:</label>
+      <button type="button" onclick="openFileDialog()">Select Folder</button>
+      <span id="folder_name"></span>
+      <input type="hidden" id="output_path" name="output_path" required>
+      <br><br>
+      <input type="submit" value="Upload">
+    </form>
+    <div id="loading">
+      <div class="loader"></div>
+    </div>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Prediction</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function openFileDialog() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.webkitdirectory = true; // Allow directory selection
+            input.onchange = e => {
+                const folderPath = e.target.files[0].webkitRelativePath.split('/')[0];
+                document.getElementById('output_path').value = folderPath;
+                document.getElementById('folder_name').innerText = folderPath;
+            };
+            input.click();
+        }
+
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                $('#loading').show();
+            });
+        });
+    </script>
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -60px;
+            margin-left: -60px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Soil classes from cone penetration test data</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <br><br>
+        <label for="output_path">Output Folder Path:</label>
+        <button type="button" onclick="openFileDialog()">Select Folder</button>
+        <span id="folder_name"></span>
+        <input type="hidden" id="output_path" name="output_path" required>
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Prediction</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function openFileDialog() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.webkitdirectory = true; // Allow directory selection
+            input.onchange = e => {
+                const folderPath = e.target.files[0].webkitRelativePath.split('/')[0];
+                document.getElementById('output_path').value = folderPath;
+                document.getElementById('folder_name').innerText = folderPath;
+            };
+            input.click();
+        }
+
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                $('#loading').show();
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/images/background.jpg'); /* Add your background image path */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        header img {
+            max-width: 150px;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        input[type="file"], input[type="submit"], button {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="file"], button {
+            background-color: #3498db;
+            color: #fff;
+        }
+        input[type="submit"] {
+            background-color: #2ecc71;
+            color: #fff;
+            cursor: pointer;
+        }
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -60px;
+            margin-left: -60px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/images/logo.png" alt="Logo"> 
+    </header>
+    <h1>Soil Classes from Cone Penetration Test Data</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <br><br>
+        <label for="output_path">Output Folder Path:</label>
+        <button type="button" onclick="openFileDialog()">Select Folder</button>
+        <span id="folder_name"></span>
+        <input type="hidden" id="output_path" name="output_path" required>
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Prediction</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function openFileDialog() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.webkitdirectory = true; // Allow directory selection
+            input.onchange = e => {
+                const folderPath = e.target.files[0].webkitRelativePath.split('/')[0];
+                document.getElementById('output_path').value = folderPath;
+                document.getElementById('folder_name').innerText = folderPath;
+            };
+            input.click();
+        }
+
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                $('#loading').show();
+                $('#submit_button').prop('disabled', true).val('Processing...');
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        window.location.href = '/results';
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/images/background.jpg'); /* Add your background image path */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        header img {
+            max-width: 150px;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        input[type="file"], input[type="submit"], button {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="file"], button {
+            background-color: #3498db;
+            color: #fff;
+        }
+        input[type="submit"] {
+            background-color: #2ecc71;
+            color: #fff;
+            cursor: pointer;
+        }
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -60px;
+            margin-left: -60px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/images/logo.png" alt="Logo">
+    </header>
+    <h1>Soil Classes from Cone Penetration Test Data</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <br><br>
+        <label for="output_path">Output Folder Path:</label>
+        <button type="button" onclick="openFileDialog()">Select Folder</button>
+        <span id="folder_name"></span>
+        <input type="hidden" id="output_path" name="output_path" required>
+        <br><br>
+        <input type="submit" id="submit_button" value="Upload">
+    </form>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+</body>
+</html> -->
+
+{% extends "base.html" %}
+
+{% block title %}Home - CSV Prediction{% endblock %}
+
+{% block content %}
+<h1>Soil Classes from Cone Penetration Test Data</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required class="btn">
+    <br><br>
+    <label for="output_path">Output Folder Path:</label>
+    <button type="button" onclick="openFileDialog()" class="btn">Select Folder</button>
+    <span id="folder_name"></span>
+    <input type="hidden" id="output_path" name="output_path" required>
+    <br><br>
+    <input type="submit" id="submit_button" value="Upload" class="btn">
+</form>
+<div id="loading">
+    <div class="loader"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function openFileDialog() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.webkitdirectory = true; // Allow directory selection
+        input.onchange = e => {
+            const folderPath = e.target.files[0].webkitRelativePath.split('/')[0];
+            document.getElementById('output_path').value = folderPath;
+            document.getElementById('folder_name').innerText = folderPath;
+        };
+        input.click();
+    }
+
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            $('#loading').show();
+            $('#submit_button').prop('disabled', true).val('Processing...');
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    window.location.href = '/results';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
